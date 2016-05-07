@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta charset="utf-8" />
+	<title>Coil 관리자 페이지</title>
+</head>
+<body>
+	<h1>Coil GCM PUSH</h1>
+	
+	<form id="contact-form" action="coil_gcm_push.html" method="post" onsubmit="alert('Coil 모든 유저에게 푸시전송되었습니다');" >
+		<div class="form-group">
+			<label>PUSH Target : </label>
+			<input type="text" name="gcm_token" />
+		</div>
+		<div class="form-group">
+			<label>PUSH Title : </label>
+			<input type="text" name="gcm_title" />
+		</div>
+		<div class="form-group">
+			<label>PUSH Message : </label>
+			<input type="text" name="gcm_message" id="message_input"/>
+		</div>
+
+		<input type="hidden" name="do" value="ok" />
+		<input type="submit" value="submit" id="fetch_submit"/>
+	</form>
+	<label>결과 화면 : </label><br>   
+	<div id="result_box"></div>
+	<script type="text/javascript">
+	function show_result(result) {
+		var box = document.getElementById("result_box");
+		box.innerHTML = result;
+	}
+	</script>
+	<?php
+	if($_POST['do'] === 'ok'){
+		include("./gcm_push/gcm-push-module.php");
+		
+		$apiKey = 'AIzaSyCSZ1QWpj2gB6gvS_jYcJICgtOMzLizq2I';
+		//array_push($devices, $_POST['gcm_token']);
+		$title = $_POST['gcm_title'];
+		$message = $_POST['gcm_message'];
+		
+		$pusher = new GCMPushMessage($apiKey, true);
+    	$pusher->setDevices($_POST['gcm_token']);
+    	$response = $pusher->send($title, $message, $extra);
+	}
+
+	?>
+	<script>show_result('<?=$response?>')</script>
+</body>
+</html>
