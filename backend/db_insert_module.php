@@ -15,14 +15,13 @@ class InsertDB{
 	// }
 
 	function insertNewMember($target_id, $target_pw){
-		$sql = "INSERT INTO ".USER_TABLE." values (null, '{$target_id}', '{$target_pw}')";
-		$result = mysqli_query($this->conn, $sql);
-		$row = mysqli_fetch_assoc($result);
-		if(is_null($row)){
+		$sql = "INSERT INTO ".USER_TABLE." values (null, '{$target_id}', '{$target_pw}', now())";
+		if(!$result = mysqli_query($this->conn, $sql)){
 			return false;
 		}else{
 			return true;
 		}
+		
 	}
 }
 ?>

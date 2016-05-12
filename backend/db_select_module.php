@@ -24,5 +24,16 @@ class SelectDB{
 			return true;
 		}
 	}
+
+	function joinCheck($target_id){
+		$sql = "SELECT * FROM ".USER_TABLE." where user_id = '{$target_id}'";
+		$result = mysqli_query($this->conn, $sql);
+		$row = mysqli_fetch_assoc($result);
+		if(is_null($row)){
+			return true;
+		}else{
+			return false;
+		}
+	}
 }
 ?>
