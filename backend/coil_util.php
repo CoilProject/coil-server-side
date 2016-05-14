@@ -7,6 +7,8 @@ define("USE_DB","ljs93kr2");
 
 // table define 
 define("USER_TABLE", "coil_user_table");
+define("STORE_TABLE", "coil_store_table");
+define("COUPON_TABLE", "coil_coupon_table");
 
 // version define
 define("V1", 1);
@@ -16,11 +18,11 @@ $response['db_error'] = false;
 
 function connect_mysqli($ip,$user,$password,$db){
 	if(!$conn = mysqli_connect($ip,$user,$password)){
-		echo "mysql 연결실패<br />";
+		//echo "mysql 연결실패<br />";
 	}
 	//mysql_query("SET NAMES UTF8");
 	if(!mysqli_select_db($conn,$db)){
-		echo "db 선택 실패<br />";
+		//echo "db 선택 실패<br />";
 	}
 	
 	return $conn;
