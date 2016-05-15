@@ -1,6 +1,7 @@
 <?php
 include("../coil_util.php");
 include("../db_select_module.php");
+include("../db_update_module.php");
 
 if($value['build_version'] >= V1 && $value['build_version'] < V1_END){
 
@@ -8,6 +9,13 @@ if($value['build_version'] >= V1 && $value['build_version'] < V1_END){
 	if($db_select->loginCheck($value['user_id'], $value['user_pw'])){
 		$response['login'] = true;
 		$response['message'] = "환영합니다";
+		$response['gcm_token'] = $value['gcm_token'];
+		$db_update = new UpdateDB($conn);
+		if($db_update->updateGcmToken($value['user_id'], $value['gcm_token'])){
+			$response['gcm_update'] = true;
+		}else{
+			$response['gcm_update'] = false;
+		}
 	}else{
 		$response['login'] = false;
 		$response['error_message'] = "이메일 또는 비밀번호가 잘못되었습니다";

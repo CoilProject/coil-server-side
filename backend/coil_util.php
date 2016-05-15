@@ -9,6 +9,7 @@ define("USE_DB","ljs93kr2");
 define("USER_TABLE", "coil_user_table");
 define("STORE_TABLE", "coil_store_table");
 define("COUPON_TABLE", "coil_coupon_table");
+define("GCM_TABLE", "coil_gcm_table");
 
 // version define
 define("V1", 1);

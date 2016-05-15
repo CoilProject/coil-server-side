@@ -5,7 +5,7 @@ include("../db_insert_module.php");
 
 if($value['build_version'] >= V1 && $value['build_version'] < V1_END){
 	$db_select = new SelectDB($conn);
-	if(!$db_select->findUserById($value['user_id'])){
+	if(!$db_select->findUserByUserId(USER_TABLE, $value['user_id'])){
 		// 유저를 찾을 수 없다 -> 가입 가능하다
 		$response['join'] = true;
 		$db_insert = new InsertDB($conn);

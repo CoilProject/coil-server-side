@@ -29,9 +29,9 @@ class SelectDB{
 			return true;
 		}
 	}
-	// 아이디로 회원을 찾는 함수
-	function findUserById($target_id){
-		$sql = "SELECT * FROM ".USER_TABLE." where user_id = '{$target_id}'";
+	// 회원아이디로 테이블의 검색결과를 찾는 함수
+	function findUserByUserId($table_name, $target_id){
+		$sql = "SELECT * FROM {$table_name} where user_id = '{$target_id}'";
 		$result = mysqli_query($this->conn, $sql);
 		$row = mysqli_fetch_assoc($result);
 		return $row;
