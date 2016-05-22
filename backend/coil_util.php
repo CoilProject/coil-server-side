@@ -10,6 +10,7 @@ define("USER_TABLE", "coil_user_table");
 define("STORE_TABLE", "coil_store_table");
 define("COUPON_TABLE", "coil_coupon_table");
 define("GCM_TABLE", "coil_gcm_table");
+define("LOG_TABLE", "coil_log_table");
 
 // version define
 define("V1", 1);
@@ -34,6 +35,13 @@ if(!$conn = connect_mysqli(MYSQL_IP, MAIN_DB, DB_PASSWORD, USE_DB)){
 	$response['db_error'] = true;
 	echo json_encode($response);
 	exit();
+}
+
+class CoilDB{
+	function doLogging($conn, $table_name, $user_id, $act, $result){
+		$sql = "INSERT INTO ".LOG_TABLE." values (null, '{$table_name}', '{$user_id}', '{$act}', {$result}, now())";
+		return mysqli_query($conn, $sql);
+	}
 }
 
 $value = json_decode(file_get_contents('php://input'), true);
