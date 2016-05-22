@@ -16,6 +16,10 @@ class UpdateDB extends CoilDB{
 			return true;
 		}
 	}
+	function updateTable($table_name, $set_col, $set_value, $where_col, $where_value){
+		$sql = "UPDATE {$table_name} SET {$set_col} = '{$set_value}' WHERE {$where_col} = '{$where_value}'";
+		return mysqli_query($this->conn, $sql);
+	}
 	// 도장의 개수를 업데이트 하는 함수
 	function stampUpdate($user_id, $coupon_id, $stamp_num){
 		$sql = "UPDATE ".COUPON_TABLE." SET current_stamp = current_stamp + {$stamp_num} WHERE coupon_id = {$coupon_id}";

@@ -6,9 +6,11 @@ include("../db_insert_module.php");
 $db_select = new SelectDB($conn);
 $db_update = new UpdateDB($conn);
 $db_insert = new InsertDB($conn);
-$row = $db_select->findRowByRecently(COUPON_TABLE, "user_id","test@test", 1);
-//$row = $db_select->findStoreInfoByCouponId(1);
+// $row = $db_select->findRowByRecently(COUPON_TABLE, "user_id","test@test", 1);
+$row = $db_select->findStoreInfoByCouponId(1);
 print_r($row);
+
+//echo $db_update->updateTable(COUPON_TABLE, "is_full", true, "coupon_id", 1);
 // print_r($row);
 
 // $result = $db_select->getTable(USER_TABLE);

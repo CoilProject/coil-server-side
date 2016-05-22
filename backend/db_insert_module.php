@@ -18,7 +18,7 @@ class InsertDB extends CoilDB{
 	}
 	// 유저가 가게 쿠폰을 다운로드 받는 행위
 	function downCoupon($user_id, $store_id){
-		$sql = "INSERT INTO ".COUPON_TABLE." values (null, '{$user_id}', {$store_id}, 0, now())";
+		$sql = "INSERT INTO ".COUPON_TABLE." values (null, '{$user_id}', {$store_id}, 0, false, now())";
 		if(!$result = mysqli_query($this->conn, $sql)){
 			parent::doLogging($this->conn, COUPON_TABLE, $user_id, "id : {$store_id} coupon down", false);
 			return false;

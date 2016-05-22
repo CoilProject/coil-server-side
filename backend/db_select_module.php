@@ -23,6 +23,21 @@ class SelectDB extends CoilDB{
 			return true;
 		}
 	}
+	// 조건이 하나 있는데, 테이블의 row 를 찾는경우
+	// $type = 0 : all (default)
+	// $type = 1 : 1 row
+	function findRowByCondition($table_name, $where_col, $where_value, $type = 0){
+		$sql = "SELECT * FROM {$table_name} WHERE {$where_col} = '{$where_value}'";
+		if($result = mysqli_query($this->conn, $sql)){
+			if($type == 0){
+				return $result;
+			}else if($type ==1){
+				return mysqli_fetch_assoc($result);
+			}
+		}else{
+			return false;
+		}
+	}
 	// 회원아이디로 테이블의 검색결과를 찾는 함수
 	// 기본적으로는 $result 를 넘기고, 특별하게 1을 요규하는 애들만 row를 하나 뽑아내준다
 	// row_num 이 1 이면 한개 row 만, 아니라면 result 값 그대로 뽑아낸다
