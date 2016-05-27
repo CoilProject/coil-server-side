@@ -11,6 +11,7 @@ define("STORE_TABLE", "coil_store_table");
 define("COUPON_TABLE", "coil_coupon_table");
 define("GCM_TABLE", "coil_gcm_table");
 define("LOG_TABLE", "coil_log_table");
+define("SOUND_TABLE", "coil_sound_table");
 
 // version define
 define("V1", 1);

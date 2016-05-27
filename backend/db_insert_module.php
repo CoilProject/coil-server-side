@@ -27,6 +27,16 @@ class InsertDB extends CoilDB{
 			return true;
 		}
 	}
+	// 유저 건의사항 등록하는 작업
+	function insertUserSound($user_id, $contents, $type){
+		$sql = "INSERT INTO ".SOUND_TABLE." values (null, '{$user_id}', '{$contents}', $type, now())";
+		if($result = mysqli_query($this->conn, $sql)){
+			parent::doLogging($this->conn, SOUND_TABLE, $user_id, "Type : {$type} Sound Enroll", true);
+		}else{
+			parent::doLogging($this->conn, SOUND_TABLE, $user_id, "Type : {$type} Sound Enroll", false);
+		}
+		return $result;
+	}
 
 
 }
