@@ -12,8 +12,8 @@ class SelectDB extends CoilDB{
 		
 	}
 	// 로그인 성공을 체크하는 함수
-	function loginCheck($target_id, $target_pw){
-		$sql = "SELECT * FROM ".USER_TABLE." where user_id = '{$target_id}' and user_pw = '{$target_pw}'";
+	function loginCheck($table_name, $id_col, $id_value, $pw_col, $pw_value){
+		$sql = "SELECT * FROM {$table_name} where {$id_col} = '{$id_value}' and {$pw_col} = '{$pw_value}'";
 		$result = mysqli_query($this->conn, $sql);
 		$row = mysqli_fetch_assoc($result);
 		if(is_null($row)){

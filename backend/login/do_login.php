@@ -6,7 +6,7 @@ include("../db_update_module.php");
 if($value['build_version'] >= V1 && $value['build_version'] < V1_END){
 
 	$db_select = new SelectDB($conn);
-	if($db_select->loginCheck($value['user_id'], $value['user_pw'])){
+	if($db_select->loginCheck(USER_TABLE, "user_id", $value['user_id'], "user_pw", $value['user_pw'])){
 		$response['login'] = true;
 		$response['message'] = "환영합니다";
 		$response['gcm_token'] = $value['gcm_token'];
