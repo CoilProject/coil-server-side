@@ -11,8 +11,7 @@ if($value['build_version'] >= V1 && $value['build_version'] < V1_END){
 		$response['error_message'] = "문의사항 등록에 문제가 있습니다";
 	}
 }else{
-	//????
-	///?????
+	
 }
 
 echo json_encode($response);
