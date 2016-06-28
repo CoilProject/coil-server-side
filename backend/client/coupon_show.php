@@ -30,3 +30,5 @@ class CouponInfo{
 }
 
 echo json_encode($response);
+
+?>

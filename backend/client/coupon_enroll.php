@@ -21,3 +21,5 @@ if($value['build_version'] >= V1 && $value['build_version'] < V1_END){
 }
 
 echo json_encode($response);
+
+?>

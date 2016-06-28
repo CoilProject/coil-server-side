@@ -1,5 +1,6 @@
 <?php
 include("../coil_util.php");
+include("../../gcm_push/gcm-push-module.php");
 include("../db_select_module.php");
 
 
