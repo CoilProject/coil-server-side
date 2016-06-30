@@ -7,7 +7,7 @@ class InsertDB extends CoilDB{
 	}
 	// 새로운 유저가 등록하는 함수
 	function insertNewMember($target_id, $target_pw){
-		$sql = "INSERT INTO ".USER_TABLE." values (null, '{$target_id}', '{$target_pw}', now())";
+		$sql = "INSERT INTO ".USER_TABLE." values (null, '{$target_id}', '{$target_pw}', 0, 'Z', 1, now())";
 		if(!$result = mysqli_query($this->conn, $sql)){
 			return false;
 		}else{

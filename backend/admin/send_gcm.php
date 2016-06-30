@@ -5,11 +5,13 @@ include("../db_select_module.php");
 
 
 if($value['build_version'] >= V1 && $value['build_version'] < V1_END){
-	// TODO : 아이디를 이용해서 GCM정보를 찾아야한다.
+	// TODO : 아이디를 이용해서 GCM 도착지 정보를 찾아야한다.
 	$db_select = new SelectDB($conn);
 	if($result = $db_select->findUserByUserId(USER_TABLE, $value['user_id'], 1)){
 		if($result['user_permission'] == P_SHOP){
-			
+			// 요청 주체가 업주일 경우
+		}else if($result['user_permission'] == P_ADMIN){
+			// 요청 주체가 관리자일 경우
 		}
 		$apiKey = 'AIzaSyCSZ1QWpj2gB6gvS_jYcJICgtOMzLizq2I';
 		//array_push($devices, $_POST['gcm_token']);
