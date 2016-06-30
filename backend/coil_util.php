@@ -13,6 +13,12 @@ define("GCM_TABLE", "coil_gcm_table");
 define("LOG_TABLE", "coil_log_table");
 define("SOUND_TABLE", "coil_sound_table");
 
+// user_permission
+define("P_USER", 0); // 사용자
+define("P_ADMIN", 1); // 관리자
+define("P_SHOP", 2); // 업주
+define("P_GUEST", 3); // 게스트
+
 // version define
 define("V1", 1);
 define("V1_END", 99);
